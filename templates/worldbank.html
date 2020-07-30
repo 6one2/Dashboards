@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Dashboard WorldBank</title>
+      
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Seb Villard Dashboards</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-item nav-link active" href="/index">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#" target="_blank">World Bank data</a>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="row ml-2">
+      <div class="col-1 border-right">
+        <a href="https://github.com/6one2" target="_blank"><img class="img-fluid mt-2 mb-2" src="static/githublogo.png" alt="github"></a>
+        <a href="https://www.linkedin.com/in/spetraccavillard/" target="_blank"><img class="img-fluid mt-2 mb-2" src="static/linkedinlogo.png" alt="linkedin"></a>
+        <a href="https://www.instagram.com/sebvillard/" target="_blank"><img class="img-fluid mt-2 mb-2" src="static/instagram.png" alt="instagram"></a>
+      </div>
+      <div class="col-11">
+        <h2>World Bank Data Dashboard</h2>
+        <h4 class="text-muted">Land Use Visualizations</h4>
+          <span>Find more data from the world bank @ <a href="https://data.worldbank.org" target="_blank">https://data.worldbank.org</a></span>
+        <div class="row mt-5">
+            <div class="col-6">
+                <div id="{{ids[0]}}"></div>
+            </div>
+            <div class="col-6">
+                <div id="{{ids[1]}}"></div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-6"><img src="/static/plot4.png" width=100% alt="plot"></div>
+          <div class="col-6"><img src="/static/plot5.png" width=100% alt="plot"></div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- TODO: Add margins and padding where appropriate. In Bootstrap you can add margins using classes: mr-3 would be margin-right 3. mr-5 would be a larger right margin. You can use mt, mb, ml, mr, pt, pb, pl, pr where t, b, l and r stand for top, bottom, left and right.
+-->
+
+<!-- TODO: paste your HTML into the W3C html validator. Fix any errors that come up: https://validator.w3.org/#validate_by_input -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  </body>
+<footer>
+
+        <script type="text/javascript">
+            // plots the figure with id
+            // id must match the div id above in the html
+            var figures = {{figuresJSON | safe}};
+            var ids = {{ids | safe}};
+            for(var i in figures) {
+                Plotly.plot(ids[i],
+                    figures[i].data,
+                    figures[i].layout || {});
+            }
+        </script>
+    
+</footer>
+
+</html>
