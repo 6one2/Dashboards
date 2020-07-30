@@ -28,4 +28,4 @@ def worldbank():
     return render_template('worldbank.html', ids=ids, figuresJSON=figuresJSON)
 
 
-app.run(host='0.0.0.0', port=3001, debug=False)
+# app.run(port=5000, debug=True)
