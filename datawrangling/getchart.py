@@ -84,7 +84,7 @@ def return_figures():
         )
     
     layout_three = dict(
-        title = 'Government expediture per student over the past 10 years', 
+        title = 'Government expenditure per student over the past 10 years', 
         xaxis = dict(
             title = 'Year', 
             autotick=True, 
