@@ -84,12 +84,12 @@ def return_figures():
         )
     
     layout_three = dict(
-        title = 'Gross Domestic Product over the past 10 years', 
+        title = 'Government expediture per student over the past 10 years', 
         xaxis = dict(
             title = 'Year', 
             autotick=True, 
             tick0=TODAY_10ago.year), 
-        yaxis = dict(title = 'Current USD$')
+        yaxis = dict(title = '% GDP per capita')
     )
     
     
@@ -97,5 +97,6 @@ def return_figures():
     figures = []
     figures.append(dict(data=graph_one, layout=layout_one))
     figures.append(dict(data=graph_two, layout=layout_two))
+    figures.append(dict(data=graph_three, layout=layout_three))
     
     return figures
