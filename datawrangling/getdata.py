@@ -53,3 +53,15 @@ def GDP(country_list, date = TODAY):
     )
     
     return data.reset_index(level=1).sort_values('date')
+    
+
+def getEducation(country_list, date=TODAY):
+	indicator = 'SE.XPD.PRIM.PC.ZS'
+	data = wbdata.get_data(
+	indicator=indicator,
+	pandas=True,
+	column_name='Expenditure_per_student',
+	country=country_list,
+	data_date=date
+	)
+	

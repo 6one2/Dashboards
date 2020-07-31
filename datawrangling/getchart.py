@@ -3,6 +3,7 @@ import plotly.graph_objs as go
 from .getdata import get_top10, HumanCapital, GDP, TODAY
 from datetime import datetime
 
+TODAY_10ago = TODAY.replace(year=TODAY.year-10)
 
 def return_figures():
     """Creates plotly visualizations
@@ -43,7 +44,6 @@ def return_figures():
     
     # second chart: GDP the past 10 years
     graph_two =[]
-    TODAY_10ago = TODAY.replace(year=TODAY.year-10)
     data_two = GDP(country_code, (TODAY_10ago, TODAY))
     
     for name in country_name:
@@ -59,6 +59,31 @@ def return_figures():
         )
     
     layout_two = dict(
+        title = 'Gross Domestic Product over the past 10 years', 
+        xaxis = dict(
+            title = 'Year', 
+            autotick=True, 
+            tick0=TODAY_10ago.year), 
+        yaxis = dict(title = 'Current USD$')
+    )
+    
+    # third chart: %GDP per student the past 10 years
+    graph_three =[]
+    data_three = getEducation(country_code, (TODAY_10ago, TODAY))
+    
+    for name in country_name:
+        x_val = data_three.loc[name,'date'].values.tolist()
+        y_val = data_three.loc[name,'Expenditure_per_student'].values.tolist()
+        graph_three.append(
+            go.Scatter(
+                x = x_val,
+                y = y_val,
+                mode = 'lines+markers',
+                name = name
+            )
+        )
+    
+    layout_three = dict(
         title = 'Gross Domestic Product over the past 10 years', 
         xaxis = dict(
             title = 'Year', 
