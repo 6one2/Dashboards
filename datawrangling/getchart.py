@@ -1,6 +1,6 @@
 import pandas as pd
 import plotly.graph_objs as go
-from .getdata import get_top10, HumanCapital, GDP, TODAY
+from .getdata import get_top10, HumanCapital, GDP, TODAY, getEducation
 from datetime import datetime
 
 TODAY_10ago = TODAY.replace(year=TODAY.year-10)
